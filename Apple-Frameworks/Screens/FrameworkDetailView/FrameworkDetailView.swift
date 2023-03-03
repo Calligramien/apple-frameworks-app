@@ -22,25 +22,30 @@ struct FrameworkDetailView: View {
             
             Spacer()
             
-            Button {
-                isShowingSafariView = true
-            } label: {
-//                AFButton(title: "Learn More")
-                Label("Learn More", systemImage: "book.fill")
+            Link(destination: URL(string: framework.urlString) ?? URL(string: "www.apple.com")!) {
+                AFButton(title: "Learn More")
             }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
-            .buttonBorderShape(.capsule)
-            .tint(.accentColor)
+            
+            //            Button {
+            //                isShowingSafariView = true
+            //            } label: {
+            ////                AFButton(title: "Learn More")
+            //                Label("Learn More", systemImage: "book.fill")
+            //            }
+            //            .buttonStyle(.bordered)
+            //            .controlSize(.large)
+            //            .buttonBorderShape(.capsule)
+            //            .tint(.accentColor)
+            //        }
+            //        .fullScreenCover(isPresented: $isShowingSafariView, content: {
+            //            SafariView(url: URL(string: framework.urlString) ?? URL(string: "www.apple.com")!)
+            //        })
         }
-        .fullScreenCover(isPresented: $isShowingSafariView, content: {
-            SafariView(url: URL(string: framework.urlString) ?? URL(string: "www.apple.com")!)
-        })
     }
 }
-
-struct FrameworkDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        FrameworkDetailView(framework: MockData.sampleFramework)
+    
+    struct FrameworkDetailView_Previews: PreviewProvider {
+        static var previews: some View {
+            FrameworkDetailView(framework: MockData.sampleFramework)
+        }
     }
-}
